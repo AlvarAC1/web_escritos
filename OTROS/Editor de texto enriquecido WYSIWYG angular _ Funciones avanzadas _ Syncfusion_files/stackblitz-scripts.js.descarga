@@ -1,0 +1,71 @@
+var stkbltz = {};
+var html = document.getElementsByTagName('html')[0];
+
+if (!location.search || (location.search && location.search.indexOf('editable=true') !== -1)) {
+    html.onmouseover = showButton;
+    html.onmouseleave = hideButton;
+}
+
+function showButton() {
+    var stackblitz = document.getElementById('stackblitz');
+    stackblitz.style.visibility = 'visible';
+}
+
+function hideButton() {
+    var stackblitz = document.getElementById('stackblitz');
+    stackblitz.style.visibility = 'hidden';
+}
+
+function openStackBlitz() {
+    importHTML("stackblitz.json", true);
+}
+
+function importHTML(url_, isLast) {
+    var xmlhttprequest = new XMLHttpRequest();
+
+    xmlhttprequest.addEventListener("load", function(event_) {
+        var response = JSON.parse(this.responseText);
+        var keys = Object.keys(response);
+        for (var i = 0; i < keys.length; i++) {
+            stkbltz[keys[i]] = response[keys[i]].toString();
+        }
+        if (isLast) {
+            var form = document.createElement('form');
+            form.setAttribute('action', 'https://stackblitz.com/run');
+            form.setAttribute('method', 'post');
+            form.setAttribute('target', '_blank');
+            form.setAttribute('accept-charset', 'utf-8');
+            form.id = 'stackblitz-form';
+            form.style.display = 'none';
+            document.body.appendChild(form);
+            var files = Object.keys(stkbltz);
+            for (var i = 0; i < files.length; i++) {
+                if (files[i] === 'tags') {
+                    var tags = stkbltz[files[i]].split(',');
+                    for (var j = 0; j < tags.length; j++) {
+                        var tag = document.createElement('input');
+                        tag.setAttribute('type', 'hidden');
+                        tag.setAttribute('name', 'project[tags][' + j + ']');
+                        tag.setAttribute('value', tags[j]);
+                        form.appendChild(tag);
+                    }
+                } else {
+                    var ip = document.createElement('input');
+                    ip.setAttribute('type', 'hidden');
+                    ip.setAttribute('value', stkbltz[files[i]]);
+                    ip.setAttribute('name', 'project[' + files[i] + ']');
+                    if (files[i].indexOf('.') !== -1) {
+                        ip.setAttribute('name', 'project[files][' + files[i] + ']');
+                    }
+                    form.appendChild(ip);
+                }
+            }
+            form.submit();
+            form.remove();
+        }
+    }, false);
+
+    xmlhttprequest.open("GET", url_, true);
+    xmlhttprequest.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    xmlhttprequest.send(null);
+}

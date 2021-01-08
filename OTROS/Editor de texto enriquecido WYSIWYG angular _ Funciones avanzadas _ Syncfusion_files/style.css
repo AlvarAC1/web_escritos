@@ -1,0 +1,19 @@
+@font-face{font-family:'icomoon';src:url('fonts/icomoon.eot?xcyk3k');src:url('fonts/icomoon.eot?xcyk3k#iefix') format('embedded-opentype'),
+url('fonts/icomoon.ttf?xcyk3k') format('truetype'),
+url('fonts/icomoon.woff?xcyk3k') format('woff'),
+url('fonts/icomoon.svg?xcyk3k#icomoon') format('svg');font-weight:normal;font-style:normal;}
+[class^="icon-"], [class*=" icon-"]{font-family:'icomoon' !important;speak:none;font-style:normal;font-weight:normal;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+.icon-crg:before{content:"\e90a";color:#797b7c;}
+.icon-list:before{content:"\e90d";color:#797b7c;}
+.icon-chart:before{content:"\e909";color:#797b7c;}
+.icon-grid:before{content:"\e90b";color:#797b7c;}
+.icon-excel:before{content:"\e90b";color:#797b7c;}
+.icon-documentation:before{content:"\e900";color:#666;}
+.icon-api-reference:before{content:"\e901";color:#666;}
+.icon-kb:before{content:"\e902";color:#666;}
+.icon-blog:before{content:"\e903";color:#666;}
+.icon-contact-support:before{content:"\e904";color:#666;}
+.icon-release-history:before{content:"\e905";color:#666;}
+.icon-whatsnew:before{content:"\e906";color:#666;}
+.icon-forum:before{content:"\e907";color:#666;}
+.icon-roadmap:before{content:"\e908";color:#666;}

@@ -1,0 +1,415 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"no",
+				"nombre"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"song",
+				"songId"
+			],
+			[
+				"get",
+				"getAlbum"
+			],
+			[
+				"ar",
+				"artists"
+			],
+			[
+				"art",
+				"artistRemoved"
+			],
+			[
+				"find",
+				"findById"
+			],
+			[
+				"a",
+				"artistId"
+			],
+			[
+				"artis",
+				"artistStored"
+			],
+			[
+				"pa",
+				"path_file"
+			],
+			[
+				"im",
+				"imageFile"
+			],
+			[
+				"ima",
+				"getImageFile"
+			],
+			[
+				"user",
+				"userUpdated"
+			],
+			[
+				"file",
+				"file_name"
+			],
+			[
+				"f",
+				"findByIdAndUpdate"
+			],
+			[
+				"md",
+				"md_upload"
+			],
+			[
+				"fil",
+				"file_path"
+			],
+			[
+				"us",
+				"userUpdated"
+			],
+			[
+				"use",
+				"userUpdated"
+			],
+			[
+				"u",
+				"update"
+			],
+			[
+				"p",
+				"params"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"pas",
+				"password"
+			],
+			[
+				"has",
+				"hash"
+			],
+			[
+				"b",
+				"bcrypt"
+			],
+			[
+				"para",
+				"params"
+			],
+			[
+				"e",
+				"express"
+			],
+			[
+				"Us",
+				"UserSchema"
+			],
+			[
+				"mo",
+				"mongoose"
+			],
+			[
+				"bo",
+				"bodyParser"
+			],
+			[
+				"body",
+				"bodyParser"
+			],
+			[
+				"in",
+				"input\tTag"
+			],
+			[
+				"fo",
+				"form\tTag"
+			],
+			[
+				"border-c",
+				"border-color"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"h",
+				"h3\tTag"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"s",
+				"style\tAttr"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "proyecto web_escritos.sublime-project",
+			"settings":
+			{
+				"buffer_size": 45,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 120.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/wamp/www/web_escritos"
+	],
+	"file_history":
+	[
+		"/C/wamp/www/curso-mean2/routes/song.js",
+		"/C/wamp/www/curso-mean2/controllers/song.js",
+		"/C/wamp/www/curso-mean2/routes/album.js",
+		"/C/wamp/www/curso-mean2/controllers/album.js",
+		"/C/wamp/www/curso-mean2/routes/artist.js",
+		"/C/wamp/www/curso-mean2/controllers/artist.js",
+		"/C/wamp/www/curso-mean2/app.js",
+		"/C/wamp/www/curso-mean2/index.js",
+		"/H/DAW/USB 1º DAW/copia segurettat/descargas/nba.sql",
+		"/C/Users/Àlvar/Documents/WEBS/bdprueba.sql",
+		"/H/DAW/USB 1º DAW/Apuntes Programacion.java",
+		"/H/DAW/USB 1º DAW/funcionesGenericas.java",
+		"/H/DAW/USB 1º DAW/Triangulo.java",
+		"/C/wamp/www/curso-mean2/controllers/user.js",
+		"/F/Copia PC Cofares/EiiJava/farmanager_septiembre/src/java/estudioii/gesql/pojos/Camara.java",
+		"/F/Copia PC Cofares/EiiJava/farmanager_septiembre/src/java/estudioii/grid/grid005Rec.java",
+		"/C/wamp/www/curso-mean2/pwd",
+		"/C/wamp/www/curso-mean2/package.json",
+		"/H/USB 1º DAW/copia segurettat/descargas/nba.sql",
+		"/H/USB 1º DAW/Apuntes Programacion.java",
+		"/C/wamp/www/curso-mean2/routes/user.js",
+		"/C/wamp/www/curso-mean2/models/album.js",
+		"/C/wamp/www/curso-mean2/middlewares/authenticated.js",
+		"/C/wamp/www/curso-mean2/services/jwt.js",
+		"/C/wamp/www/curso-mean2/midedlewares/authenticated.js",
+		"/C/wamp/www/curso-mean2/models/user.js",
+		"/C/wamp/www/curso-mean2/models/song.js",
+		"/C/wamp/www/curso-mean2/models/artist.js",
+		"/C/wamp/www/curso-mean2/controlers/user.js",
+		"/C/wamp/www/curso-mean2/node_modules/fd-slicer/index.js",
+		"/C/wamp/www/curso-mean2/package-lock.json",
+		"/C/wamp/www/curso-mean2/node_modules/index.js",
+		"/C/Users/Àlvar/Desktop/CGT apuntes",
+		"/C/Users/Àlvar/Desktop/Curso/Consola entrada",
+		"/C/Users/Àlvar/Desktop/Curso SQL/BBDD Alvar Inicial 20190418 0920.sql",
+		"/C/Users/Àlvar/Desktop/Curso/demo-04/.git/config",
+		"/C/Users/Àlvar/Desktop/Curso/demo-03/.git/config",
+		"/C/Users/Àlvar/Documents/Router",
+		"/C/Users/Àlvar/Desktop/5454.php",
+		"/C/Users/Àlvar/Desktop/Examen Diseño/animación submarino.html",
+		"/E/2º DAW/Alvar Clase - PC/DW Entorno Cliente/ejercicioTABLA.html",
+		"/C/Users/Àlvar/Downloads/Ejercicios teórico prácticos CSS 4/bola rotando con animación.html",
+		"/C/Users/Àlvar/Desktop/Examen Diseño/bola rotando con animación.html",
+		"/C/Users/Àlvar/Desktop/Examen Diseño/Prueba.html",
+		"/C/Users/Àlvar/Desktop/emilio.html",
+		"/C/Users/Àlvar/Desktop/view.html",
+		"/E/2º DAW/Alvar Clase - PC/DW Entorno Cliente/ejercicioTABLA.js",
+		"/C/Users/Àlvar/Desktop/5.2.php",
+		"/C/Users/Àlvar/Desktop/5.2.css",
+		"/C/Users/Àlvar/Desktop/#pp1{.css",
+		"/C/Users/Àlvar/Desktop/ggg.php",
+		"/C/Users/Àlvar/Desktop/holamundo.js",
+		"/H/USB 1º DAW/DAW/Programacion/Apuntes Programacion.java",
+		"/I/2º DAW/Alvar Clase/DW Entorno Cliente/prueba.js"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "proyecto web_escritos.sublime-project",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 45,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 40.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "proyecto web_escritos.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 354.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
