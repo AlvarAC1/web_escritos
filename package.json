@@ -4,6 +4,7 @@
   "description": "Proyecto Web escritos de Manolo con Angular y nodeJS",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Alvar A.C",

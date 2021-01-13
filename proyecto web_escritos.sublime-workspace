@@ -164,11 +164,30 @@
 	"buffers":
 	[
 		{
-			"file": "proyecto web_escritos.sublime-project",
+			"file": "package.json",
 			"settings":
 			{
-				"buffer_size": 45,
+				"buffer_size": 618,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.js",
+			"settings":
+			{
+				"buffer_size": 798,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app.js",
+			"settings":
+			{
+				"buffer_size": 572,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -265,13 +284,14 @@
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 24.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 101.0,
 		"where_history":
 		[
+			"C:\\wamp\\www\\web_escritos"
 		]
 	},
 	"find_state":
@@ -279,6 +299,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"useNewUrlParser"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -296,29 +317,88 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "proyecto web_escritos.sublime-project",
-					"semi_transient": true,
+					"file": "package.json",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 45,
+						"buffer_size": 618,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								615,
+								615
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 798,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								398,
+								398
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 572,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								481,
+								481
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -332,7 +412,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 27.0
+		"height": 24.0
 	},
 	"input":
 	{
@@ -369,7 +449,7 @@
 	"project": "proyecto web_escritos.sublime-project",
 	"replace":
 	{
-		"height": 50.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -407,7 +487,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 354.0,
+	"side_bar_width": 213.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
