@@ -9,8 +9,12 @@ var app = require('./app');
 //configuramos un puerto para nuestro servidor, para que coja la variable de entorno si lo tenemos configurado  o el definido
 var port = process.env.PORT || 3977;
 
+//para evitar un tipo de fallos https://victorroblesweb.es/2019/10/03/solucionar-problemas-y-avisos-de-mongoose-en-nodejs/
+mongoose.set('useFindAndModify', false);
+mongoose.Promise = global.Promise;
+
 //conexion a mongodb usando la direccion a nuestra bbdd
-mongoose.connect('mongodb://localhost:27017/web_escritos', (err, res) => {
+mongoose.connect('mongodb://localhost:27017/web_escritos', { useNewUrlParser: true , useUnifiedTopology: true }, (err, res) => {
 	if(err){
 		throw err;
 	}else{
