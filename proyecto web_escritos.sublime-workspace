@@ -216,7 +216,7 @@
 			"file": "controlador/usuarioControlador.js",
 			"settings":
 			{
-				"buffer_size": 1610,
+				"buffer_size": 3649,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -225,7 +225,7 @@
 			"file": "rutas/usuarioRuta.js",
 			"settings":
 			{
-				"buffer_size": 439,
+				"buffer_size": 491,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -508,7 +508,7 @@
 						"translation.y": 108.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -517,15 +517,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1610,
+						"buffer_size": 3649,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								504,
-								504
+								3547,
+								3547
 							]
 						],
 						"settings":
@@ -533,7 +533,7 @@
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 54.0,
+						"translation.y": 720.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -545,15 +545,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 439,
+						"buffer_size": 491,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								338,
-								338
+								491,
+								491
 							]
 						],
 						"settings":
@@ -565,7 +565,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

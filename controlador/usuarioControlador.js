@@ -3,6 +3,7 @@
 //importamos para poder usar
 var Usuario = require('../modelos/usuarioModelo');
 var bcrypt = require('bcrypt-nodejs'); //para guardar contraseñas encriptadas
+var jwt = require('../servicios/jwt');
 
 
 function pruebas(req, res){
