@@ -3,7 +3,7 @@
 //importamos
 var jwt = require('jwt-simple');
 var moment = require('moment');
-var secret = 'NLB3JWl@U+5zgdyE5';
+var secret = 'NLB3JWl';
 
 //esta funcion comprobara si los datos del token son correctos, se ejecutara antes de la accion del controlador
 exports.asegurarAutenticacion = function(req, res, next){
@@ -31,12 +31,12 @@ exports.asegurarAutenticacion = function(req, res, next){
 		}
 	//capturamos error si hubiera fallo
 	}catch(ex){
-		console.log(ex);
+		//console.log(ex);
 		return res.status(404).send({message: 'Token no válido'});
 	}
 
 	//añadimos a la request una propiedad con un objeto con todos los datos del usuario
-	req.usuarioDesencriptado = payload;
+	req.usuario = payload;
 
 	//salimos de este mediador
 	next();

@@ -3,7 +3,7 @@
 //importamos
 var jwt = require('jwt-simple');
 var moment = require('moment'); //para tener la fecha de creacion y expiracion de el token de jwt (para expirar sesion usuario)
-var secret = 'NLB3JWl@U+5zgdyE5';
+var secret = 'NLB3JWl';
 
 
 //esta funcion codificara al objeto usuario y los guardara dentro de un token (hash) para tenerlo codificado

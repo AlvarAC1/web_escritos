@@ -3,7 +3,7 @@
 //importamos para poder usar
 var Usuario = require('../modelos/usuarioModelo');
 var bcrypt = require('bcrypt-nodejs'); //para guardar contraseñas encriptadas
-var jwt = require('../servicios/jwt');
+var jwt = require('../servicios/jwt'); //para generar tokens que contendran los datos del usuario en un objeto
 
 
 function pruebas(req, res){
@@ -141,6 +141,72 @@ function loginUsuario(req, res){
 }
 
 
+function actualizarUsuario(req, res){
+	var usuarioID = req.params.id;
+	var actualizacion = req.body;
+
+	if(usuarioID != req.usuario.sub){
+	  return res.status(500).send({message: 'No tienes permiso para actualizar este usuario'});
+	}
+
+	Usuario.findByIdAndUpdate(usuarioID, actualizacion, (err, usuarioActualizado) => {
+		if(err){
+			res.status(500).send({message: 'Error al actualizar el usuario'});
+		}else{
+			if(!usuarioActualizado){
+				res.status(404).send({message: 'No se ha podido actualizar el usuario'});
+			}else{
+				res.status(200).send({usuario: usuarioActualizado});
+			}
+		}
+	});
+}
+
+
+function subirImagen(req, res){
+	
+	var usuarioId = req.params.id;
+	var nombre_fichero = 'Imagen no subida...';
+
+	//si viene algun fichero
+	if(req.files){
+
+		var fichero_path = req.files.image.path;
+/*		var fichero_split = fichero_path.split('\\');
+		var nombre_fichero = file_split[2];
+
+		var ext_split = nombre_fichero.split('\.');
+		var file_ext = ext_split[1];
+*/
+/*		if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'gif'){
+
+			User.findByIdAndUpdate(usuarioId, {image: nombre_fichero}, (err, userUpdated) => {
+
+				if(!userUpdated){
+
+					res.status(404).send({message: 'No se ha podido actualizar el usuario'});
+				
+				}else{
+
+					res.status(200).send({image: nombre_fichero, user: userUpdated});
+				}
+			});
+		}else{
+
+			res.status(200).send({message: 'Extensión del archivo no valida'});
+		
+		}
+*/	
+	//sino viene fichero	
+	}else{
+
+		console.log(req.files);
+		res.status(200).send({message: 'No has subido ninguna imagen...'});
+	
+	}
+}
+
+
 
 
 
@@ -148,6 +214,8 @@ function loginUsuario(req, res){
 module.exports = {
 	pruebas,
 	guardarUsuario,
-	loginUsuario
+	loginUsuario,
+	actualizarUsuario,
+	subirImagen
 
 };
