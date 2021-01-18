@@ -2,13 +2,17 @@
 
 //importamos para poder usar
 var Usuario = require('../modelos/usuarioModelo');
+
 var bcrypt = require('bcrypt-nodejs'); //para guardar contraseñas encriptadas
 var jwt = require('../servicios/jwt'); //para generar tokens que contendran los datos del usuario en un objeto
+//para poder trabajar con el sistema de ficheros
+var fs = require('fs'); //file sistem
+var path = require('path'); // acceder a rutas concretas
 
 
 function pruebas(req, res){
 	res.status(200).send({
-		message: 'Probando una acción del usuarioControlador del api rest con Node y Mongo'
+		message: 'Probando una acción del usuarioControlador'
 	});
 }
 
@@ -16,10 +20,11 @@ function pruebas(req, res){
 function guardarUsuario(req, res){
 
 	var usuario = new Usuario();
-	var params = req.body; //guardamos todos los paramatros que nos lleguen por la peticion post
+	var params = req.body; //guardamos todos los paramatros que nos lleguen en la request del body por la peticion post
 
 	console.log(params);
 
+	//asignamos los valores que nos lleguen de la solicitud a nuestro objeto usuario
 	usuario.nombre = params.nombre;
 	usuario.apellidos = params.apellidos;
 	usuario.email = params.email;
@@ -114,7 +119,7 @@ function loginUsuario(req, res){
 					//si la comprobacion es correcta
 					if(check){
 						
-						//si existe parametro gethash devolver los datos del usuario logueado con un token de jwt
+						//si existe parametro gethash en la request del body devolver los datos del usuario logueado con un token de jwt
 						if(params.gethash){
 							
 							//devuelve un token generado de jwt con el objeto del usuario para tener sus datos y poder decodificarlo 
@@ -171,44 +176,71 @@ function subirImagen(req, res){
 	//si viene algun fichero
 	if(req.files){
 
-		var fichero_path = req.files.imagen.path;
-		console.log(fichero_path);
-/*		var fichero_split = fichero_path.split('\\');
-		var nombre_fichero = file_split[2];
-
+		//sacamos los datos de la imagen
+		var fichero_path = req.files.imagen.path; //ruta
+		var fichero_split = fichero_path.split('\\');
+		var nombre_fichero = fichero_split[2];
 		var ext_split = nombre_fichero.split('\.');
-		var file_ext = ext_split[1];
-*/
-/*		if(file_ext == 'png' || file_ext == 'jpg' || file_ext == 'gif'){
+		var fichero_ext = ext_split[1];
+		
+		//si la extension es valida
+		if(fichero_ext == 'png' || fichero_ext == 'jpg' || fichero_ext == 'gif'){
 
-			User.findByIdAndUpdate(usuarioId, {image: nombre_fichero}, (err, userUpdated) => {
+			//actualizamos o guardamos la imagen al usuario, le pasamos el id, el objeto JSON con la propiedad a modificar
+			Usuario.findByIdAndUpdate(usuarioId, {imagen: nombre_fichero}, (err, usuarioActualizado) => {
 
-				if(!userUpdated){
+				//si hay error en la actualizacion
+				if(!usuarioActualizado){
 
 					res.status(404).send({message: 'No se ha podido actualizar el usuario'});
 				
+				//si se actualiza correctamente
 				}else{
 
-					res.status(200).send({image: nombre_fichero, user: userUpdated});
+					res.status(200).send({imagen: nombre_fichero, usuario: usuarioActualizado});
 				}
 			});
+
+		//si la extension NO es valida
 		}else{
 
-			res.status(200).send({message: 'Extensión del archivo no valida'});
+			res.status(200).send({message: 'Extensión del archivo no valida (png, jpg, gif)'});
 		
 		}
-*/	
+	
 	//sino viene fichero	
 	}else{
 
-		console.log(req.files);
 		res.status(200).send({message: 'No has subido ninguna imagen...'});
 	
 	}
 }
 
+//este metodo nos devuelve un archivo pasandole una solicitud con el nombre del archivo
+function getImagenArchivo(req, res){
 
+	//recojo el parametro que nos llega por la url
+	var imagenArchivo = req.params.imagenArchivo;
+	var path_file = './subidas/usuarios/'+imagenArchivo;
 
+	//comprobamos si existe dicho archivo
+	fs.exists(path_file, function(exists){
+
+		//si existe
+		if(exists){
+
+			//enviamos el archivo solicitado
+			res.sendFile(path.resolve(path_file));
+
+		//si no existe
+		}else{
+
+			res.status(200).send({message: 'No existe la imagen...'});
+
+		}
+
+	});
+}
 
 
 //Para poder exportar los metodos
@@ -217,6 +249,7 @@ module.exports = {
 	guardarUsuario,
 	loginUsuario,
 	actualizarUsuario,
-	subirImagen
+	subirImagen,
+	getImagenArchivo
 
 };
