@@ -171,7 +171,8 @@ function subirImagen(req, res){
 	//si viene algun fichero
 	if(req.files){
 
-		var fichero_path = req.files.image.path;
+		var fichero_path = req.files.imagen.path;
+		console.log(fichero_path);
 /*		var fichero_split = fichero_path.split('\\');
 		var nombre_fichero = file_split[2];
 
