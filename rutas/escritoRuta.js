@@ -17,8 +17,9 @@ var med_subida = multipart({ uploadDir: './subidas/escritos' });
 //TODO y si no quiero que todos los visitantes esten logueados?? distintas rutas para logueados o no logueados?
 
 //cargamos rutas
-api.get('/probando-controlador-escritos', med_autoriza.asegurarAutenticacion, EscritoControlador.getEscrito); 
+api.get('/ver-escrito/:id', med_autoriza.asegurarAutenticacion, EscritoControlador.getEscrito);
 //sin pasar por autenticacion //api.get('/probando-controlador', UsuarioController.pruebas);
+api.post('/guardar-escrito', med_autoriza.asegurarAutenticacion, EscritoControlador.guardarEscrito);
 
 
 //exportamos api para poder usarlo fuera

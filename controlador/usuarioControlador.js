@@ -1,7 +1,7 @@
 'use strict'
 
 //importamos para poder usar
-var Usuario = require('../modelos/usuarioModelo');
+var UsuarioModelo = require('../modelos/usuarioModelo');
 
 var bcrypt = require('bcrypt-nodejs'); //para guardar contraseñas encriptadas
 var jwt = require('../servicios/jwt'); //para generar tokens que contendran los datos del usuario en un objeto
@@ -19,7 +19,7 @@ function pruebas(req, res){
 
 function guardarUsuario(req, res){
 
-	var usuario = new Usuario();
+	var usuario = new UsuarioModelo();
 	var params = req.body; //guardamos todos los paramatros que nos lleguen en la request del body por la peticion post
 
 	console.log(params);
@@ -95,7 +95,7 @@ function loginUsuario(req, res){
 	var password = params.password;
 
 	//Usamos metodo de mongoose findOne(), metiendole como un where clasico un json dentro de los parametros y un callback de error o devolviendo usuario
-	Usuario.findOne({email: email.toLowerCase()}, (err, usuario) => {
+	UsuarioModelo.findOne({email: email.toLowerCase()}, (err, usuario) => {
 		
 		//si hay error
 		if(err){
@@ -150,11 +150,11 @@ function actualizarUsuario(req, res){
 	var usuarioID = req.params.id;
 	var actualizacion = req.body;
 
-	if(usuarioID != req.usuario.sub){
+	if(usuarioID !== req.usuario.sub){
 	  return res.status(500).send({message: 'No tienes permiso para actualizar este usuario'});
 	}
 
-	Usuario.findByIdAndUpdate(usuarioID, actualizacion, (err, usuarioActualizado) => {
+	UsuarioModelo.findByIdAndUpdate(usuarioID, actualizacion, (err, usuarioActualizado) => {
 		if(err){
 			res.status(500).send({message: 'Error al actualizar el usuario'});
 		}else{
@@ -179,15 +179,15 @@ function subirImagen(req, res){
 		//sacamos los datos de la imagen
 		var fichero_path = req.files.imagen.path; //ruta
 		var fichero_split = fichero_path.split('\\');
-		var nombre_fichero = fichero_split[2];
+		nombre_fichero = fichero_split[2];
 		var ext_split = nombre_fichero.split('\.');
 		var fichero_ext = ext_split[1];
 		
 		//si la extension es valida
-		if(fichero_ext == 'png' || fichero_ext == 'jpg' || fichero_ext == 'gif'){
+		if(fichero_ext === 'png' || fichero_ext === 'jpg' || fichero_ext === 'gif'){
 
 			//actualizamos o guardamos la imagen al usuario, le pasamos el id, el objeto JSON con la propiedad a modificar
-			Usuario.findByIdAndUpdate(usuarioId, {imagen: nombre_fichero}, (err, usuarioActualizado) => {
+			UsuarioModelo.findByIdAndUpdate(usuarioId, {imagen: nombre_fichero}, (err, usuarioActualizado) => {
 
 				//si hay error en la actualizacion
 				if(!usuarioActualizado){

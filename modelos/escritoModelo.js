@@ -10,8 +10,8 @@ var Schema = mongoose.Schema;
 var EscritoSchema = Schema({
 		//no definimos id pues mongodb se lo añade automaticamente
 		titulo: String,
+		texto: String,
 		tipo: String,
-		fecha: String,
 		imagen: String,
 		audio: String,
 		date: { type: Date, default: Date.now },
