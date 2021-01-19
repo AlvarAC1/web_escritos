@@ -18,8 +18,26 @@ var med_subida = multipart({ uploadDir: './subidas/escritos' });
 
 //cargamos rutas
 api.get('/ver-escrito/:id', med_autoriza.asegurarAutenticacion, EscritoControlador.getEscrito);
-//sin pasar por autenticacion //api.get('/probando-controlador', UsuarioController.pruebas);
 api.post('/guardar-escrito', med_autoriza.asegurarAutenticacion, EscritoControlador.guardarEscrito);
+api.get('/escritos-id/:usuarioId?', med_autoriza.asegurarAutenticacion, EscritoControlador.getEscritosPorUsuario);
+api.get('/escritos-tipo/:tipo?', EscritoControlador.getEscritosPorTipo);
+
+//actualizarEscrito
+//actualizarEscritoUsuario
+//actualizarEscritoAdmin
+//borrarEscrito
+//borrarEscritoUsuario
+//borrarEscritoAdmin
+//subirActualizarImagenUsuario
+//actualizarSubirImagenAdmin
+//subirActualizarAudioUsuario
+//actualizarAudioAdmin
+
+
+//TODO
+//function getEscritosPorFecha(req, res)
+//function getEscritosPorTipo(req, res)
+
 
 
 //exportamos api para poder usarlo fuera

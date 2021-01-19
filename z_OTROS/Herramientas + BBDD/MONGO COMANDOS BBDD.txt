@@ -1,0 +1,8 @@
+
+Consultar:  https://byspel.com/mongodb-eliminar-documentos-y-colecciones/
+
+mostrar todos los elementos de la coleccion de usuarios:
+	db.usuarios.find()
+
+borrar todos los elementos de la coleccion de usuarios
+	db.usuarios.drop()

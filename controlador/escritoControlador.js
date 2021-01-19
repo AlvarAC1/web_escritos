@@ -35,6 +35,93 @@ function getEscrito(req, res){
 	});
 }
 
+function getEscritosPorUsuario(req, res){
+
+	var usuarioId = req.params.usuarioId;
+
+	//si nos llega el usuarioId a FALSE mostramos todos los escritos
+	if(!usuarioId){
+
+		var busqueda = EscritoModelo.find({}).sort('date');
+
+	//si nos llega el usuarioId a TRUE mostramos todos los escritos asociados a ese usuarioId
+	}else{
+
+		var busqueda = EscritoModelo.find({usuario: usuarioId}).sort('date');
+		//var busqueda = EscritoModelo.find({}).sort('date');
+		//var busqueda = EscritoModelo.find({tipo: "Poma"}).sort('date');
+
+	}
+
+	busqueda.populate({
+		path: 'escrito',
+		populate: {
+			path: 'usuario',
+			model: 'usuarioModelo'
+		}
+	}).exec(function(err, escritos){
+
+		if(err){
+
+			res.status(500).send({message: 'Error en la petición'});
+
+		}else{
+
+			if(!escritos){
+
+				res.status(404).send({message: 'No hay escritos de ese usuario !!'});
+
+			}else{
+
+				res.status(200).send({escritos});
+
+			}
+		}
+	});
+}
+
+
+function getEscritosPorTipo(req, res){
+
+	var tipo = req.params.tipo;
+
+	if(tipo){
+
+		var busqueda = EscritoModelo.find({tipo: tipo}).sort('date');
+
+	}else{
+		res.status(500).send({message: 'El tipo del escrito no consta'});
+
+
+	}
+
+	busqueda.populate({
+		path: 'escrito',
+		populate: {
+			path: 'usuario',
+			model: 'usuarioModelo'
+		}
+	}).exec(function(err, escritos){
+
+		if(err){
+
+			res.status(500).send({message: 'Error en la petición'});
+
+		}else{
+
+			if(!escritos){
+
+				res.status(404).send({message: 'No hay escritos de dicho tipo !!'});
+
+			}else{
+
+				res.status(200).send({escritos});
+
+			}
+		}
+	});
+}
+
 
 function guardarEscrito(req, res){
 
@@ -48,9 +135,9 @@ function guardarEscrito(req, res){
 
 	//media
 	escrito.audio = null;
-	escrito.image = null;
+	escrito.imagen = null;
 	//relacion con usuario
-	escrito.usuario = params.usuarioId;
+	escrito.usuario = params.usuario;
 
 	escrito.save((err, escritoGuardado) => {
 
@@ -66,7 +153,39 @@ function guardarEscrito(req, res){
 
 			}else{
 
-				res.status(200).send({artist: escritoGuardado});
+				res.status(200).send({escrito: escritoGuardado});
+
+			}
+		}
+	});
+}
+
+function actualizarEscrito(req, res){
+
+	var escritoId = req.params.id;
+	var update = req.body;
+
+	if(userId != req.user.sub){
+
+		return res.status(500).send({message: 'No tienes permiso para actualizar este usuario'});
+
+	}
+
+	User.findByIdAndUpdate(userId, update, (err, userUpdated) => {
+
+		if(err){
+
+			res.status(500).send({message: 'Error al actualizar el usuario'});
+
+		}else{
+
+			if(!userUpdated){
+
+				res.status(404).send({message: 'No se ha podido actualizar el usuario'});
+
+			}else{
+
+				res.status(200).send({user: userUpdated});
 
 			}
 		}
@@ -77,6 +196,8 @@ function guardarEscrito(req, res){
 //Para poder exportar los metodos
 module.exports = {
 	getEscrito,
-	guardarEscrito
+	guardarEscrito,
+	getEscritosPorUsuario,
+	getEscritosPorTipo
 
 };

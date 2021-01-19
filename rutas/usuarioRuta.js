@@ -18,7 +18,6 @@ var med_subida = multipart({ uploadDir: './subidas/usuarios' });
 
 //cargamos rutas
 api.get('/probando-controlador', med_autoriza.asegurarAutenticacion, UsuarioController.pruebas); 
-//sin pasar por autenticacion //api.get('/probando-controlador', UsuarioController.pruebas);
 api.post('/registrar', UsuarioController.guardarUsuario);
 api.post('/login', UsuarioController.loginUsuario);
 api.put('/actualizacion-usuario/:id', med_autoriza.asegurarAutenticacion, UsuarioController.actualizarUsuario);

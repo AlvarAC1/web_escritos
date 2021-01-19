@@ -8,17 +8,16 @@ var Schema = mongoose.Schema;
 
 //modelo de usuario
 var EscritoSchema = Schema({
-		//no definimos id pues mongodb se lo añade automaticamente
 		titulo: String,
 		texto: String,
 		tipo: String,
 		imagen: String,
 		audio: String,
 		date: { type: Date, default: Date.now },
-		//definimos relacion entre la entidad Escrito y Usuario
-		autor: { type: Schema.ObjectId, ref: 'UsuarioModelo' }
-		
+		usuario: { type: Schema.ObjectId, ref: 'UsuarioModelo' }
 });
+
+//mostrar: boolean
 
 //para exportar el modelo de usuario
 module.exports = mongoose.model('Escrito', EscritoSchema);
