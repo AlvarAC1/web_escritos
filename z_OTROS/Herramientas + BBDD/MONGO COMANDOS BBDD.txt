@@ -1,8 +1,16 @@
 
-Consultar:  https://byspel.com/mongodb-eliminar-documentos-y-colecciones/
+Consultar:  
+	https://byspel.com/mongodb-eliminar-documentos-y-colecciones/
+	https://geekflare.com/es/mongodb-queries-examples/
 
-mostrar todos los elementos de la coleccion de usuarios:
+Mostrar BBDD
+	show dbs
+
+Usar una BBDD:
+	use nombreBBDD
+
+Mostrar todos los elementos de la coleccion de usuarios:
 	db.usuarios.find()
 
-borrar todos los elementos de la coleccion de usuarios
+Borrar todos los elementos de la coleccion de usuarios
 	db.usuarios.drop()

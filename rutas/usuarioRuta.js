@@ -11,18 +11,20 @@ var med_autoriza = require('../mediador/autenticado');
 //nos permite enviar ficheros por el protocolo http
 var multipart = require('connect-multiparty');
 //cargamos el mediador para la subida de archivos
-var med_subida = multipart({ uploadDir: './subidas/usuarios' });
+var med_subida_usuario = multipart({ uploadDir: './subidas/usuarios' });
 
-
-//TODO y si no quiero que todos los visitantes esten logueados?? distintas rutas para logueados o no logueados?
 
 //cargamos rutas
-api.get('/probando-controlador', med_autoriza.asegurarAutenticacion, UsuarioController.pruebas); 
 api.post('/registrar', UsuarioController.guardarUsuario);
 api.post('/login', UsuarioController.loginUsuario);
-api.put('/actualizacion-usuario/:id', med_autoriza.asegurarAutenticacion, UsuarioController.actualizarUsuario);
-api.post('/subida-imagen-usuario/:id', [med_autoriza.asegurarAutenticacion, med_subida], UsuarioController.subirImagen);
-api.get('/get-imagen-archivo/:imagenArchivo', UsuarioController.getImagenArchivo);
+api.get('/ver-usuarios', med_autoriza.asegurarAutenticacion, UsuarioController.getUsuarios);
+api.put('/actualizacion-usuario/:usuarioId', med_autoriza.asegurarAutenticacion, UsuarioController.actualizarUsuario);
+
+api.post('/subida-imagen-usuario/:usuarioId', [med_autoriza.asegurarAutenticacion, med_subida_usuario], UsuarioController.subirActualizarImagen);
+api.get('/get-imagen-usuario/:imagenArchivo', UsuarioController.getImagenUsuario);
+
+//borrarUsuarioAdmin - TODO en principio solo podra hacer esto un admin, solo deberia ver esta opcion el mismo
+api.delete('/borrar-usuario/:usuarioId', med_autoriza.asegurarAutenticacion, UsuarioController.borrarUsuarioPorAdmin);
 
 //exportamos api para poder usarlo fuera
 module.exports = api;

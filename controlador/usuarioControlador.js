@@ -10,25 +10,16 @@ var fs = require('fs'); //file sistem
 var path = require('path'); // acceder a rutas concretas
 
 
-function pruebas(req, res){
-	res.status(200).send({
-		message: 'Probando una acción del usuarioControlador'
-	});
-}
-
-
 function guardarUsuario(req, res){
 
 	var usuario = new UsuarioModelo();
 	var params = req.body; //guardamos todos los paramatros que nos lleguen en la request del body por la peticion post
 
-	console.log(params);
-
 	//asignamos los valores que nos lleguen de la solicitud a nuestro objeto usuario
 	usuario.nombre = params.nombre;
 	usuario.apellidos = params.apellidos;
 	usuario.email = params.email;
-	usuario.rol = 'ROL_ADMIN';
+	usuario.rol = 'ROL_ESCRITOR';
 	usuario.imagen = 'null';
 	//usuario.escritosFav = [] ;
 
@@ -145,16 +136,49 @@ function loginUsuario(req, res){
 	});
 }
 
+function getUsuarios(req, res){
+
+	var busquedaUsuarios = UsuarioModelo.find({}).sort('tipo');
+	//console.log(busqueda);
+
+	if(busquedaUsuarios == null || busquedaUsuarios == ""){
+		res.status(500).send({message: 'busqueda incorrecta'});
+	}
+
+	busquedaUsuarios.populate({
+		path: 'usuario'
+	}).exec(function(err, usuarios){
+
+		if(err){
+
+			res.status(500).send({message: 'Error en la petición'});
+
+		}else{
+
+			if(!usuarios){
+
+				res.status(404).send({message: 'No hay escritos de ese usuario !!'});
+
+				//todo ok
+			}else{
+
+				res.status(200).send({usuarios});
+
+			}
+		}
+	});
+}
+
 
 function actualizarUsuario(req, res){
-	var usuarioID = req.params.id;
+	var usuarioId = req.params.id;
 	var actualizacion = req.body;
 
 	if(usuarioID !== req.usuario.sub){
 	  return res.status(500).send({message: 'No tienes permiso para actualizar este usuario'});
 	}
 
-	UsuarioModelo.findByIdAndUpdate(usuarioID, actualizacion, (err, usuarioActualizado) => {
+	UsuarioModelo.findByIdAndUpdate(usuarioId, actualizacion, (err, usuarioActualizado) => {
 		if(err){
 			res.status(500).send({message: 'Error al actualizar el usuario'});
 		}else{
@@ -168,9 +192,9 @@ function actualizarUsuario(req, res){
 }
 
 
-function subirImagen(req, res){
+function subirActualizarImagen(req, res){
 	
-	var usuarioId = req.params.id;
+	var usuarioId = req.params.usuarioId;
 	var nombre_fichero = 'Imagen no subida...';
 
 	//si viene algun fichero
@@ -217,7 +241,7 @@ function subirImagen(req, res){
 }
 
 //este metodo nos devuelve un archivo pasandole una solicitud con el nombre del archivo
-function getImagenArchivo(req, res){
+function getImagenUsuario(req, res){
 
 	//recojo el parametro que nos llega por la url
 	var imagenArchivo = req.params.imagenArchivo;
@@ -242,14 +266,50 @@ function getImagenArchivo(req, res){
 	});
 }
 
+//TODO comprobar que es tipo ROL_ADMIN
+function borrarUsuarioPorAdmin(req, res){
+
+	var rolUsuario = req.usuario.role;
+	var usuarioId = req.params.usuarioId;
+
+	if(rolUsuario == "ROL_ADMIN"){
+
+		UsuarioModelo.findByIdAndRemove(usuarioId, (err, usuarioBorrado) => {
+
+			if(err){
+
+				res.status(500).send({message: 'Error en el servidor'});
+
+			}else{
+
+				if(!usuarioBorrado){
+
+					res.status(404).send({message: 'No se ha borrado el usuario'});
+
+				}else{
+
+					res.status(200).send({song: usuarioBorrado});
+
+				}
+			}
+		});
+
+	}else{
+		return res.status(500).send({message: 'Solo un administrador puede borrar usuaraios'});
+	}
+
+
+}
+
 
 //Para poder exportar los metodos
 module.exports = {
-	pruebas,
 	guardarUsuario,
 	loginUsuario,
+	getUsuarios,
 	actualizarUsuario,
-	subirImagen,
-	getImagenArchivo
+	subirActualizarImagen,
+	getImagenUsuario,
+	borrarUsuarioPorAdmin
 
 };

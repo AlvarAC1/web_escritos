@@ -13,7 +13,7 @@ var EscritoSchema = Schema({
 		tipo: String,
 		imagen: String,
 		audio: String,
-		date: { type: Date, default: Date.now },
+		fechaCreacion: { type: Date, default: Date.now },
 		usuario: { type: Schema.ObjectId, ref: 'UsuarioModelo' }
 });
 

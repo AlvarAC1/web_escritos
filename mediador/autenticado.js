@@ -8,8 +8,6 @@ var secret = 'NLB3JWl';
 //esta funcion comprobara si los datos del token son correctos, se ejecutara antes de la accion del controlador
 exports.asegurarAutenticacion = function(req, res, next){
 
-	//TODO y si no quiero que todos los usuarios esten logueados?? el flujo no pasaria del primer IF
-
 	//si no nos llega el token por la cabecera, autorizacion
 	if(!req.headers.autorizacion){
 		return res.status(403).send({message: 'La petición no tiene la cabecera de autenticación'});
