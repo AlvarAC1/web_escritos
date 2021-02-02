@@ -18,33 +18,21 @@ var med_subida_audio_escrito = multipart({ uploadDir: './subidas/audioEscritos' 
 //cargamos rutas
 api.get('/ver-escrito/:escritoId', med_autoriza.asegurarAutenticacion, EscritoControlador.getEscrito);
 api.get('/ver-escritos', EscritoControlador.getEscritos);
-
 api.post('/guardar-escrito', med_autoriza.asegurarAutenticacion, EscritoControlador.guardarEscrito);
-
 api.get('/escritos-id/:usuarioId?', med_autoriza.asegurarAutenticacion, EscritoControlador.getEscritosPorUsuario);
-api.get('/escritos-tipo/:tipoEscrito?', EscritoControlador.getEscritosPorTipo);
-
-//TODO en principio un usuario solo vera sus escritos, pero lo ideal seria controlar que un usuario solo pueda actualizar su escrito, un admin todo
-api.post('/actualizar-escrito/:escritoId', med_autoriza.asegurarAutenticacion, EscritoControlador.actualizarEscrito);
-//actualizarEscritoUsuario
-
-//borrarEscritoUsuario
+api.get('/escritos-tipo/:tipoEscrito?', EscritoControlador.getEscritosPorTipoOrdenadoFecha);
+api.post('/actualizar-escrito-autor/:escritoId', med_autoriza.asegurarAutenticacion, EscritoControlador.actualizarEscritoAutor);
 api.delete('/borrar-escrito/:escritoId', med_autoriza.asegurarAutenticacion, EscritoControlador.borrarEscrito);
-//borrarEscritoAdmin
-
-
-api.post('/subida-imagen-escrito/:escritoId', [med_autoriza.asegurarAutenticacion, med_subida_imagen_escrito], EscritoControlador.subirActualizarImagenEscrito);
+api.post('/subir-actualizar-imagen-escrito/:escritoId', [med_autoriza.asegurarAutenticacion, med_subida_imagen_escrito], EscritoControlador.subirActualizarImagenEscrito);
 api.get('/get-imagen-escrito/:imagenEscrito', EscritoControlador.getImagenEscrito);
-
-api.post('/guardar_audio_escrito/:escritoId', [med_autoriza.asegurarAutenticacion, med_subida_audio_escrito], EscritoControlador.subirActualizarAudioEscrito);
-//api.get('/get_audio_escrito/:id', med_autoriza.asegurarAutenticacion, EscritoControlador.getAudio);
-//api.get('/get_audios_escritos/:album?', med_autoriza.asegurarAutenticacion, EscritoControlador.getAudios);
-//api.put('/actualizar_audio_escrito/:id', med_autoriza.asegurarAutenticacion, EscritoControlador.actualizarAudios);
-//api.delete('/borrar_audio_escrito/:id', med_autoriza.asegurarAutenticacion, EscritoControlador.borrarAudios);
-
+api.post('/subir-actualizar-audio-escrito/:escritoId', [med_autoriza.asegurarAutenticacion, med_subida_audio_escrito], EscritoControlador.subirActualizarAudioEscrito);
+api.get('/get_audio_escrito/:audioEscrito', EscritoControlador.getAudioEscrito);
+//api.get('/get_audios_escritos/:album?', med_autoriza.asegurarAutenticacion, EscritoControlador.getAudios); -------------> Seria interesante una sección donde poder escuchar todos los audios
+//api.delete('/borrar_imagen_escrito/:idEscrito', med_autoriza.asegurarAutenticacion, EscritoControlador.borrarImagen); --------> Podemos borrar el campo imagen del escrito PERO tambien habria que eliminar el archivo del directorio
+//api.delete('/borrar_audio_escrito/:idEscrito', med_autoriza.asegurarAutenticacion, EscritoControlador.borrarAudio); ----------> Podemos borrar el campo audio del escrito PERO tambien habria que eliminar el archivo del directorio
 
 
-//TODO
+
 //function getEscritosPorFecha(req, res)
 //function getEscritosPorTipo(req, res)
 

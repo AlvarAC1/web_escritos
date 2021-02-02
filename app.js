@@ -15,6 +15,14 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json()); //convierte a json los datos que nos llegan por las peticiones http
 
 // configurar cabeceras http
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
+
+    next();
+});
 
 // rutas base - antes de ejecutar el fichero de ruta, cada ruta tendra esto delante
 app.use('/api', usuario_rutas);

@@ -197,7 +197,7 @@
 			"file": "modelos/usuarioModelo.js",
 			"settings":
 			{
-				"buffer_size": 921,
+				"buffer_size": 858,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -206,7 +206,7 @@
 			"file": "controlador/usuarioControlador.js",
 			"settings":
 			{
-				"buffer_size": 6498,
+				"buffer_size": 7660,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -215,7 +215,7 @@
 			"file": "rutas/usuarioRuta.js",
 			"settings":
 			{
-				"buffer_size": 1420,
+				"buffer_size": 1481,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -224,7 +224,7 @@
 			"file": "modelos/escritoModelo.js",
 			"settings":
 			{
-				"buffer_size": 670,
+				"buffer_size": 579,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -233,7 +233,7 @@
 			"file": "controlador/escritoControlador.js",
 			"settings":
 			{
-				"buffer_size": 480,
+				"buffer_size": 8563,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -242,7 +242,7 @@
 			"file": "rutas/escritoRuta.js",
 			"settings":
 			{
-				"buffer_size": 1009,
+				"buffer_size": 2371,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -287,7 +287,6 @@
 		"/C/wamp/www/web_escritos/rutas",
 		"/C/wamp/www/web_escritos/servicios",
 		"/C/wamp/www/web_escritos/subidas",
-		"/C/wamp/www/web_escritos/subidas/escritos",
 		"/C/wamp/www/web_escritos/subidas/usuarios"
 	],
 	"file_history":
@@ -357,7 +356,7 @@
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 27.0
 	},
 	"find_in_files":
 	{
@@ -464,15 +463,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 921,
+						"buffer_size": 858,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								378,
-								378
+								0,
+								0
 							]
 						],
 						"settings":
@@ -492,15 +491,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6498,
+						"buffer_size": 7660,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								536,
-								536
+								0,
+								0
 							]
 						],
 						"settings":
@@ -521,15 +520,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1420,
+						"buffer_size": 1481,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								270,
-								270
+								0,
+								0
 							]
 						],
 						"settings":
@@ -550,15 +549,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 670,
+						"buffer_size": 579,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								551,
-								551
+								0,
+								0
 							]
 						],
 						"settings":
@@ -579,15 +578,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 480,
+						"buffer_size": 8563,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								300,
-								310
+								0,
+								0
 							]
 						],
 						"settings":
@@ -607,15 +606,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1009,
+						"buffer_size": 2371,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								137,
-								137
+								0,
+								0
 							]
 						],
 						"settings":

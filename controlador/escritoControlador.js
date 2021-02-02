@@ -118,7 +118,7 @@ function getEscritosPorUsuario(req, res){
 }
 
 
-function getEscritosPorTipo(req, res){
+function getEscritosPorTipoOrdenadoFecha(req, res){
 
 	var tipoEscrito = req.params.tipoEscrito;
 
@@ -199,52 +199,64 @@ function guardarEscrito(req, res){
 }
 
 
-function actualizarEscrito(req, res){
+function actualizarEscritoAutor(req, res){
 
 	var escritoId = req.params.escritoId;
-	var idUsuario = req.usuario.sub;
 	var update = req.body;
+	var idUsuario = req.usuario.sub;
 	var autorEscrito = "";
 
-/*
-	//hacer consulta del escrito para sacar su autor y despues discriminar la actualizacion si eres el autor
+
+	//intentamos consultar datos escrito
 	EscritoModelo.findById(escritoId,(err, escrito) => {
-		var autorEscrito = escrito.usuario;
 
-	});
-*/
+		if(err){
 
-	//se se ha introducido un dato en el titulo, texto o tipo
-	if(req.body.titulo == null && req.body.texto == null && req.body.tipo == null){
+			res.status(500).send({message: 'Error al consultar el escrito para conocer su autor'});
 
-		return res.status(404).send({message: 'No hay datos para actualizar'});
+		}else{
 
-	//si No hay cambios
-	}else{
+			//guardamos autor
+			autorEscrito = escrito.usuario;
 
-		EscritoModelo.findByIdAndUpdate(escritoId, update, (err, escritoActualizado) => {
+			//si usuario y autor escrito son distintos
+			if(idUsuario != autorEscrito){
 
-			if(err){
+				res.status(500).send({message: 'El usuario actual no es el autor del escrito que se desea modificar'});
 
-				res.status(500).send({message: 'Error al actualizar el escrito'});
+			//si se ha introducido un dato en el titulo, texto o tipo
+			}else if(req.body.titulo == null && req.body.texto == null && req.body.tipo == null){
+
+				return res.status(404).send({message: 'No hay datos para actualizar'});
 
 			}else{
 
-				if(!escritoActualizado){
+				//intentamos actualizar escrito
+				EscritoModelo.findByIdAndUpdate(escritoId, update, (err, escritoActualizado) => {
 
-					res.status(404).send({message: 'No se ha podido actualizar el escrito'});
+					if(err){
 
-				}else{
+						res.status(500).send({message: 'Error al actualizar el escrito'});
 
-					res.status(200).send({usuario: escritoActualizado});
+					}else{
 
-				}
+						if(!escritoActualizado){
+
+							res.status(404).send({message: 'No se ha podido actualizar el escrito'});
+
+						}else{
+
+							res.status(200).send({escritoViejo: escritoActualizado, escritoNuevo: update});
+
+						}
+					}
+				});
 			}
-		});
-	}
 
+		}
+
+	});
 }
-
 
 
 function borrarEscrito(req, res){
@@ -326,7 +338,7 @@ function getImagenEscrito(req, res){
 
 	//recojo el parametro que nos llega por la url
 	var imagenEscrito = req.params.imagenEscrito;
-	var path_file = './subidas/escritos/'+imagenEscrito;
+	var path_file = './subidas/imagenEscritos/'+imagenEscrito;
 
 	//comprobamos si existe dicho archivo
 	fs.exists(path_file, function(exists){
@@ -390,6 +402,35 @@ function subirActualizarAudioEscrito(req, res){
 }
 
 
+function getAudioEscrito(req, res) {
+
+	console.log("----------------------------- ESTAMOS ------------------------");
+
+	//recojo el parametro que nos llega por la url
+	var audioEscrito = req.params.audioEscrito;
+	var path_file = './subidas/audioEscritos/' + audioEscrito;
+
+	//comprobamos si existe dicho archivo
+	fs.exists(path_file, function (exists) {
+
+		//si existe
+		if (exists) {
+
+			//enviamos el archivo solicitado
+			res.sendFile(path.resolve(path_file));
+
+			//si no existe
+		} else {
+
+			res.status(200).send({message: 'No existe el audio...'});
+
+		}
+
+	});
+}
+
+
+
 
 //Para poder exportar los metodos
 module.exports = {
@@ -397,11 +438,12 @@ module.exports = {
 	getEscritos,
 	guardarEscrito,
 	getEscritosPorUsuario,
-	getEscritosPorTipo,
-	actualizarEscrito,
+	getEscritosPorTipoOrdenadoFecha,
+	actualizarEscritoAutor,
 	borrarEscrito,
 	subirActualizarImagenEscrito,
 	getImagenEscrito,
-	subirActualizarAudioEscrito
+	subirActualizarAudioEscrito,
+	getAudioEscrito
 
 };

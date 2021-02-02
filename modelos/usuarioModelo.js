@@ -25,4 +25,4 @@ var UsuarioSchema = Schema({
 		*/
 
 //para exportar el modelo de usuario
-module.exports = mongoose.model('Usuario', UsuarioSchema);
+ module.exports = mongoose.model('Usuario', UsuarioSchema);
