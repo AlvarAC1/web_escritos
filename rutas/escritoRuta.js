@@ -11,7 +11,7 @@ var med_autoriza = require('../mediador/autenticado');
 //nos permite enviar archivos por el protocolo http
 var multipart = require('connect-multiparty');
 //cargamos el mediador para la subida de archivos
-var med_subida_imagen_escrito = multipart({ uploadDir: './subidas/escritos' });
+var med_subida_imagen_escrito = multipart({ uploadDir: './subidas/imagenEscritos' });
 var med_subida_audio_escrito = multipart({ uploadDir: './subidas/audioEscritos' });
 
 
@@ -27,6 +27,8 @@ api.post('/subir-actualizar-imagen-escrito/:escritoId', [med_autoriza.asegurarAu
 api.get('/get-imagen-escrito/:imagenEscrito', EscritoControlador.getImagenEscrito);
 api.post('/subir-actualizar-audio-escrito/:escritoId', [med_autoriza.asegurarAutenticacion, med_subida_audio_escrito], EscritoControlador.subirActualizarAudioEscrito);
 api.get('/get_audio_escrito/:audioEscrito', EscritoControlador.getAudioEscrito);
+
+api.post('/borrar-imagen-escrito-autor/:escritoId', med_autoriza.asegurarAutenticacion, EscritoControlador.borrarImagenEscrito);
 //api.get('/get_audios_escritos/:album?', med_autoriza.asegurarAutenticacion, EscritoControlador.getAudios); -------------> Seria interesante una sección donde poder escuchar todos los audios
 //api.delete('/borrar_imagen_escrito/:idEscrito', med_autoriza.asegurarAutenticacion, EscritoControlador.borrarImagen); --------> Podemos borrar el campo imagen del escrito PERO tambien habria que eliminar el archivo del directorio
 //api.delete('/borrar_audio_escrito/:idEscrito', med_autoriza.asegurarAutenticacion, EscritoControlador.borrarAudio); ----------> Podemos borrar el campo audio del escrito PERO tambien habria que eliminar el archivo del directorio

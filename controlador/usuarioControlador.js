@@ -6,7 +6,7 @@ var UsuarioModelo = require('../modelos/usuarioModelo');
 var bcrypt = require('bcrypt-nodejs'); //para guardar contraseñas encriptadas
 var jwt = require('../servicios/jwt'); //para generar tokens que contendran los datos del usuario en un objeto
 //para poder trabajar con el sistema de ficheros
-var fs = require('fs'); //file sistem
+var fs = require('fs'); //file system
 var path = require('path'); // acceder a rutas concretas
 
 

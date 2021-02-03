@@ -11,7 +11,7 @@ var med_autoriza = require('../mediador/autenticado');
 //nos permite enviar ficheros por el protocolo http
 var multipart = require('connect-multiparty');
 //cargamos el mediador para la subida de archivos
-var med_subida_usuario = multipart({ uploadDir: './subidas/usuarios' });
+var med_subida_usuario = multipart({ uploadDir: './subidas/imagenUsuarios' });
 
 
 //cargamos rutas

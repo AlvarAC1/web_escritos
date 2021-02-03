@@ -5,7 +5,7 @@ var UsuarioModelo = require('../modelos/usuarioModelo');
 var EscritoModelo = require('../modelos/escritoModelo');
 
 //para poder trabajar con el sistema de ficheros
-var fs = require('fs'); //file sistem
+var fs = require('fs'); //file system
 var path = require('path'); // acceder a rutas concretas
 
 
@@ -165,17 +165,12 @@ function guardarEscrito(req, res){
 
 	var escrito = new EscritoModelo();
 	var params = req.body;
-
-	//Parametros
 	escrito.titulo = params.titulo;
 	escrito.texto = params.texto;
 	escrito.tipo = params.tipo;
-
-	//media
 	escrito.audio = null;
 	escrito.imagen = null;
-	//relacion con usuario
-	escrito.usuario = params.usuario;
+	escrito.usuario = params.usuario; //relacion con usuario
 
 	escrito.save((err, escritoGuardado) => {
 
@@ -203,6 +198,10 @@ function actualizarEscritoAutor(req, res){
 
 	var escritoId = req.params.escritoId;
 	var update = req.body;
+	/*var update=  {
+		imagen: null
+	}*/
+
 	var idUsuario = req.usuario.sub;
 	var autorEscrito = "";
 
@@ -359,6 +358,69 @@ function getImagenEscrito(req, res){
 	});
 }
 
+function borrarImagenEscrito(req, res){
+
+	var escritoId = req.params.escritoId;
+	var idUsuario = req.usuario.sub;
+	var autorEscrito;
+	var imagenEscrito;
+
+	//var update = req.body;
+	var update=  {
+		imagen: null
+	};
+
+	//intentamos consultar datos escrito
+	EscritoModelo.findById(escritoId,(err, escrito) => {
+
+		if(err){
+
+			res.status(500).send({message: 'Error al consultar el escrito para conocer su autor'});
+
+		}else{
+
+			autorEscrito = escrito.usuario;
+			imagenEscrito = escrito.imagen;
+			var nombreImagen = escrito.imagen;
+			var path_file = './subidas/imagenEscritos/'+escrito.imagen;
+
+			if(nombreImagen == null){
+
+				res.status(500).send({message: 'El escrito actual no tiene imagen'});
+
+			}else if(idUsuario != autorEscrito){
+
+				res.status(500).send({message: 'El usuario actual no puede borrar la imagen del escrito, debido a que no es el autor del mismo'});
+
+			}else{
+
+				//actualizamos el campo imagen del escrito a null y borramos la imagen del fichero
+				EscritoModelo.findByIdAndUpdate(escritoId, update, (err, escritoActualizado) => {
+
+					if(err){
+
+						res.status(500).send({message: 'Error al actualizar el escrito'});
+
+					}else{
+
+						//borramos la imagen del archivo
+						fs.unlink(path_file, function(err) {
+							if (err) throw err;
+
+							console.log("La imagen "+nombreImagen+" del escrito "+escrito.titulo+" esta borrada del archivo");
+						});
+
+						res.status(200).send({escritoImagen: update, escrito: escritoActualizado});					}
+				});
+
+			}
+
+		}
+
+	});
+}
+
+
 function subirActualizarAudioEscrito(req, res){
 
 	var escritoId = req.params.escritoId;
@@ -443,6 +505,7 @@ module.exports = {
 	borrarEscrito,
 	subirActualizarImagenEscrito,
 	getImagenEscrito,
+	borrarImagenEscrito,
 	subirActualizarAudioEscrito,
 	getAudioEscrito
 
