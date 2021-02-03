@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/api/web_escritos.iml" filepath="$PROJECT_DIR$/api/web_escritos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/web_escritos.iml" filepath="$PROJECT_DIR$/.idea/web_escritos.iml" />
     </modules>
   </component>
 </project>
