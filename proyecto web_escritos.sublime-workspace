@@ -175,78 +175,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app.js",
-			"settings":
-			{
-				"buffer_size": 725,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "index.js",
-			"settings":
-			{
-				"buffer_size": 1052,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "modelos/usuarioModelo.js",
-			"settings":
-			{
-				"buffer_size": 858,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "controlador/usuarioControlador.js",
-			"settings":
-			{
-				"buffer_size": 7660,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "rutas/usuarioRuta.js",
-			"settings":
-			{
-				"buffer_size": 1481,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "modelos/escritoModelo.js",
-			"settings":
-			{
-				"buffer_size": 579,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "controlador/escritoControlador.js",
-			"settings":
-			{
-				"buffer_size": 8563,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "rutas/escritoRuta.js",
-			"settings":
-			{
-				"buffer_size": 2371,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -281,22 +209,21 @@
 	"expanded_folders":
 	[
 		"/C/wamp/www/web_escritos",
-		"/C/wamp/www/web_escritos/controlador",
-		"/C/wamp/www/web_escritos/mediador",
-		"/C/wamp/www/web_escritos/modelos",
-		"/C/wamp/www/web_escritos/rutas",
-		"/C/wamp/www/web_escritos/servicios",
-		"/C/wamp/www/web_escritos/subidas",
-		"/C/wamp/www/web_escritos/subidas/usuarios"
+		"/C/wamp/www/web_escritos/api"
 	],
 	"file_history":
 	[
-		"/C/wamp/www/web_escritos/app.js",
+		"/C/wamp/www/web_escritos/rutas/escritoRuta.js",
+		"/C/wamp/www/web_escritos/controlador/escritoControlador.js",
+		"/C/wamp/www/web_escritos/modelos/escritoModelo.js",
+		"/C/wamp/www/web_escritos/rutas/usuarioRuta.js",
+		"/C/wamp/www/web_escritos/controlador/usuarioControlador.js",
+		"/C/wamp/www/web_escritos/modelos/usuarioModelo.js",
 		"/C/wamp/www/web_escritos/index.js",
+		"/C/wamp/www/web_escritos/app.js",
 		"/C/wamp/www/web_escritos/package.json",
 		"/C/wamp/www/web_escritos/mediador/autenticado.js",
 		"/C/wamp/www/web_escritos/servicios/jwt.js",
-		"/C/wamp/www/web_escritos/controlador/usuarioControlador.js",
 		"/C/wamp/www/web_escritos/models/escrito.js",
 		"/C/wamp/www/web_escritos/models/usuario.js",
 		"/C/wamp/www/curso-mean2/routes/song.js",
@@ -398,237 +325,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 725,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								304,
-								304
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "index.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1052,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "modelos/usuarioModelo.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 858,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "controlador/usuarioControlador.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7660,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 84.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "rutas/usuarioRuta.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1481,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "modelos/escritoModelo.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 579,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "controlador/escritoControlador.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8563,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "rutas/escritoRuta.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2371,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				}
 			]
 		}
 	],
