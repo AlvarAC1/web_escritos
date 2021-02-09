@@ -5,6 +5,14 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+
+/*
+En declarations cargamos componentes y directivas
+En imports cargamos modulos del framework y los que hagamos nosotros
+En providers cargamos servicions
+En bootstrap es el punto principal donde cargamos la aplicacion, donde decimos que componente es el principal
+*/
+
 @NgModule({
   declarations: [
     AppComponent
