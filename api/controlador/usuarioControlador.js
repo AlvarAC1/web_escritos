@@ -99,7 +99,7 @@ function loginUsuario(req, res){
 			//si no existe el usuario
 			if(!usuario){
 
-				res.status(404).send({message: 'El usuario no existe'});
+				res.status(404).send({message: 'Ningún usuario tiene este email'});
 
 			//si el usuario existe	
 			}else{
@@ -127,7 +127,7 @@ function loginUsuario(req, res){
 						}
 					}else{
 
-						res.status(404).send({message: 'El usuario no ha podido loguease, contraseña incorrecta'});
+						res.status(404).send({message: 'Contraseña incorrecta'});
 					
 					}
 				});
