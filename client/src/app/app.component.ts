@@ -25,8 +25,14 @@ export class AppComponent implements OnInit{
   	this.usuarioModelo = new UsuarioModelo('','','','','','ROL_USUARIO','');
   }
 
+  //metodo que se ejecuta nada mas cargar la aplicacion
   public ngOnInit(){
 
+  	this.identidad = this._usuarioServicio.getIdentidad();
+  	this.token = this._usuarioServicio.getToken();
+
+  	console.log(this.identidad);
+  	console.log(this.token);
 
   }
 
@@ -47,7 +53,8 @@ export class AppComponent implements OnInit{
 
   			}else{
 
-  				//crear elemento en el localStroage para tener al usuario en sesion
+  				//crear elemento en el localStroage para tener al usuario en sesion, asi lo podremos llamar en cualquier parte de la aplicacion
+  				localStorage.setItem('identidad', JSON.stringify(identidad));
 
   				//conseguimos el token para enviarselo a cada peticion http
 				this._usuarioServicio.ingreso(this.usuarioModelo, 'true').subscribe(
@@ -64,6 +71,7 @@ export class AppComponent implements OnInit{
 				  			}else{
 
 				  				//crear elemento en el localStroage para tener el token disponible
+				  				localStorage.setItem('token', token);
 
 				  				console.log(token);
 				  				console.log(identidad);
@@ -86,17 +94,6 @@ export class AppComponent implements OnInit{
 				  		}
 
 				  	);  					
-
-
-
-
-
-
-
-
-
-
-
   			}
 
   		},

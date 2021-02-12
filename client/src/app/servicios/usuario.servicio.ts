@@ -7,7 +7,7 @@ import { GLOBAL } from './global';
 @Injectable()
 export class UsuarioServicio{
 
-	public identity;
+	public identidad;
 	public token;
 	public url: string;
 
@@ -33,6 +33,43 @@ export class UsuarioServicio{
 						 .map(res=> res.json());
 
 	}
+
+	//metodo para recojer del localStorage la identidad
+	getIdentidad(){
+
+		let identidad = JSON.parse(localStorage.getItem('identidad'));
+
+		if(identidad != "undefined"){
+
+			this.identidad = identidad;
+
+		}else{
+
+			this.identidad = null;
+
+		}
+
+		return this.identidad;
+	}
+
+	//metodo para recojer del localStorage el token
+	getToken(){
+
+		let token = localStorage.getItem('token');
+
+		if(token != "undefined"){
+			
+			this.token = token;
+		
+		}else{
+		
+			this.token = null;
+		}
+
+		return this.token;
+	}
+
+	
 
 
 
