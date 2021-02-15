@@ -11,18 +11,22 @@ import { UsuarioModelo } from './modelos/usuarioModelo';
 })
 
 export class AppComponent implements OnInit{
-  public title = 'Escritos';
-  public usuarioModelo: UsuarioModelo;
+  public title = 'Bienvenido a los Escritos de Manuel Argudo Alvarez';
+  public usuarioModelo_identidicado: UsuarioModelo;
+  public usuarioModelo_registrado: UsuarioModelo;
   public identidad;
   public token;
-  public errorMessage;
+  public identificateErrorMessage;
+  public registrateAlertaMessage;
+  public url: string;  
 
   constructor( 
   	
   	private _usuarioServicio: UsuarioServicio
 
   	){
-  	this.usuarioModelo = new UsuarioModelo('','','','','','ROL_USUARIO','');
+  	this.usuarioModelo_identidicado = new UsuarioModelo('','','','','','ROL_USUARIO','');
+  	this.usuarioModelo_registrado = new UsuarioModelo('','','','','','ROL_USUARIO','');
   }
 
   //metodo que se ejecuta nada mas cargar la aplicacion
@@ -37,10 +41,10 @@ export class AppComponent implements OnInit{
   }
 
   public onSubmit(){
-  	console.log(this.usuarioModelo);
+  	console.log(this.usuarioModelo_identidicado);
 
   	//consguimos los datos del usuario identificado
-  	this._usuarioServicio.ingreso(this.usuarioModelo).subscribe(
+  	this._usuarioServicio.ingreso(this.usuarioModelo_identidicado).subscribe(
 
   		response => {
 
@@ -57,7 +61,7 @@ export class AppComponent implements OnInit{
   				localStorage.setItem('identidad', JSON.stringify(identidad));
 
   				//conseguimos el token para enviarselo a cada peticion http
-				this._usuarioServicio.ingreso(this.usuarioModelo, 'true').subscribe(
+				this._usuarioServicio.ingreso(this.usuarioModelo_identidicado, 'true').subscribe(
 
 				  		response => {
 
@@ -73,10 +77,10 @@ export class AppComponent implements OnInit{
 				  				//crear elemento en el localStroage para tener el token disponible
 				  				localStorage.setItem('token', token);
 
-				  				console.log(token);
-				  				console.log(identidad);
+				  				//reseteamos los campos
+				  				this.identificateErrorMessage = null;
+				  				this.usuarioModelo_identidicado = new UsuarioModelo('','','','','','ROL_USUARIO','');
 				  			}
-
 				  		},
 				  		error => {
 
@@ -86,16 +90,13 @@ export class AppComponent implements OnInit{
 				  				
 				  				//parseamos el error para poder mostrar el texto del message que devolvemos en la respuesta desde el usuarioControlados del back
 				  				var body = JSON.parse(error._body)
-				  				this.errorMessage = body.message;
+				  				this.identificateErrorMessage = body.message;
 				  				console.log(error);
 
 				  			}
-
 				  		}
-
 				  	);  					
   			}
-
   		},
   		error => {
 
@@ -105,17 +106,72 @@ export class AppComponent implements OnInit{
   				
   				//parseamos el error para poder mostrar el texto del message que devolvemos en la respuesta desde el usuarioControlados del back
   				var body = JSON.parse(error._body)
-  				this.errorMessage = body.message;
+  				this.identificateErrorMessage = body.message;
   				console.log(error);
 
   			}
-
   		}
-
   	);
   }
 
-}
+  public cerrarSesion(){
+
+  	//borramos los datos del localStorage
+    localStorage.removeItem('identity');
+    localStorage.removeItem('token');
+    localStorage.clear();
+
+    //volvemos los valores a su estado inicial por defecto null
+    this.identidad = null;
+    this.token = null;
+    this.registrateAlertaMessage = null;
+	this.identificateErrorMessage = null;
+	this.usuarioModelo_identidicado = new UsuarioModelo('','','','','','ROL_USUARIO','');
+	this.usuarioModelo_registrado = new UsuarioModelo('','','','','','ROL_USUARIO','');
+	//this._router.navigate(['/']);  
+
+  }
+
+
+  onSubmitRegistrate(){
+    
+    console.log(this.usuarioModelo_registrado);
+
+    this._usuarioServicio.registro(this.usuarioModelo_registrado).subscribe(
+
+      response => {
+
+        let usuario = response.usuario;
+        this.usuarioModelo_registrado = usuario;
+
+        if(!usuario._id){
+
+          this.registrateAlertaMessage = 'Error al registrarse';
+
+        }else{
+
+          this.registrateAlertaMessage = 'El registro se ha realizado correctamente, identificate con '+this.usuarioModelo_registrado.email;
+          //reseteamos los campos
+          this.usuarioModelo_registrado = new UsuarioModelo('','','','','','ROL_USUARIO','');
+        }
+      },
+      error => {
+        var errorMessage = <any>error;
+
+        if(errorMessage != null){
+          var body = JSON.parse(error._body);
+          this.registrateAlertaMessage = body.message;
+
+          console.log(error);
+        }
+      }
+    );
+  }
+
+
+
+
+}//AppComponent
 
 
 

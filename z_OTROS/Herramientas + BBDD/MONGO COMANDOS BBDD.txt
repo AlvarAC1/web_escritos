@@ -1,3 +1,7 @@
+Nombre: Manuel
+Email: manuel.argudo.alvarez@gmail.com
+Pass: 55garaballa
+
 
 Consultar:  
 	https://byspel.com/mongodb-eliminar-documentos-y-colecciones/
@@ -14,3 +18,6 @@ Mostrar todos los elementos de la coleccion de usuarios:
 
 Borrar todos los elementos de la coleccion de usuarios
 	db.usuarios.drop()
+
+Eliminar documentos y colecciones
+	db.empleados.remove({"cedula" : "123456"});
