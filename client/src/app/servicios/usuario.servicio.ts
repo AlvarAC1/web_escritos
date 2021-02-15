@@ -25,14 +25,41 @@ export class UsuarioServicio{
 			usuario_para_loguear.gethash = gethash;
 		}
 
-		let json = JSON.stringify(usuario_para_loguear);
-		let params = json;
+		let parametros = JSON.stringify(usuario_para_loguear);
 		let headers = new Headers({'Content-Type':'application/json'});
 
-		return this._http.post(this.url+'login', params, {headers: headers})
+		//peticion ajax al servidor
+		return this._http.post(this.url + 'login', parametros, {headers: headers})
 						 .map(res=> res.json());
 
 	}
+
+	registro(usuario_para_registrar){
+
+		let parametros = JSON.stringify(usuario_para_registrar);
+
+		let headers = new Headers({'Content-Type':'application/json'});
+
+		//peticion ajax al servidor	
+		return this._http.post(this.url + 'registrar', parametros, {headers: headers})
+						 .map(res => res.json());
+	}
+
+
+	actualizarUsuario(usuario_para_actualizar){
+
+		let parametros = JSON.stringify(usuario_para_actualizar);
+
+		let headers = new Headers({
+				'Content-Type':'application/json',
+				'Autorizacion': this.getToken()
+			});
+
+		//peticion ajax al servidor
+		return this._http.put(this.url+'actualizacion-usuario/' + usuario_para_actualizar._id, parametros, {headers: headers})
+						 .map(res => res.json());
+	}
+
 
 	//metodo para recojer del localStorage la identidad
 	getIdentidad(){
