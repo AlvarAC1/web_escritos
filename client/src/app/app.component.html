@@ -1,83 +1,66 @@
+<div class="row">
 
-<!-------------------------------------------------------- 
--	DIV TOP BIENVENIDA - Si el usuario esta registrado   -
---------------------------------------------------------->
+	<!--------------------------- 
+	-	DIV NAVEGADOR IZQUIERDA -
+	---------------------------->
 
-<div *ngIf="identidad" class="navigation col-lg-1" id="jo">
-	<h1>
-  		Bienvenido {{identidad.nombre}}
-	</h1>	
-	<button type="button" class="btn btn-outline-danger m-2" id="salirSesion" (click)="cerrarSesion()">Cerrar sesión</button>
-</div>
-
-
-
-<div *ngIf="identidad" class="central col-lg-12 text-center">
-	<img src="https://s1.1zoom.me/b5050/596/Evening_Forests_Mountains_Firewatch_Campo_Santo_549147_1920x1080.jpg" class="img-fluid" alt="...">
-</div>
-
-<!---------------------------------------------------------------------------------------
--	DIV TOP IDENTIFICACION - Opcion con Modal, investigar como cerrar al hacer submit   -
----------------------------------------------------------------------------------------->
-
-<!-- Boton disparo modal 
-<button type="button" class="btn btn-outline-success fw-bolder text-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Identifícate
-</button>
-Ventana Modal 
-<div *ngIf="!identidad" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Identifícate</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form #identificateForm="ngForm" (ngSubmit)="onSubmit()"	id="formularioIdentificateEscondido" >
-      <div class="modal-body">
-		<div *ngIf="errorMessage" class="alert alert-danger text-center" role="alert">
-			{{errorMessage}}
+	<div class="col-2" id="navIz">
+		<div  class="navigation text-center">
+			
+			<h2 class="m-2">
+		  		{{titulo}}
+			</h2>
+	<!-- Navegador Izquierda Menu -->
+			<div>
+				<div class="btn-group-vertical" id="navIzMen" role="group" aria-label="Vertical button group">
+				    <button type="button" class="btn btn-secondary fw-bolder ">
+				    	<a href="" class="text-reset text-decoration-none ">Poesias</a>
+					</button>
+					<button type="button" class="btn btn-secondary fw-bolder ">
+				    	<a href="" class="text-reset text-decoration-none">Reflexiones</a>
+					</button>
+					<button type="button" class="btn btn-secondary fw-bolder ">
+				    	<a href="" class="text-reset text-decoration-none">Cuentos</a>
+					</button>
+					<button type="button" class="btn btn-secondary fw-bolder ">
+				    	<a href="" class="text-reset text-decoration-none">Cartas</a>
+					</button>
+					<button type="button" class="btn btn-secondary fw-bolder ">
+				    	<a href="" class="text-reset text-decoration-none">Concursos</a>
+					</button>
+					<button *ngIf="identidad" type="button" class="btn btn-secondary fw-bolder ">
+				    	<a href="" class="text-reset text-decoration-none">Favoritos</a>
+					</button>
+				</div>
+			</div>
+	<!-- Navegador Izquierda Usuario Opciones  -->
+			<div *ngIf="identidad" id="usuario_identificado" class="text-center">
+				<p class="mt-3 fw-bolder">Hola {{identidad.nombre}}</p>
+				<a [routerLink]="['/mis-datos']" class="btn btn-outline-dark">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+						<path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+						<path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+					</svg>
+					Mis datos
+				</a>
+				<div></div>
+				<button type="button" class="btn btn-outline-danger mt-3" id="salirSesion" (click)="cerrarSesion()">Salir</button>
+			</div>
 		</div>
-			<div class="form-floating mb-3 bg-light" >
-		 	<input #emailIde="ngModel" [(ngModel)]="usuarioModelo_identidicado.email" 			name="emailIde" type="email" class="form-control" placeholder="nombre@ejemplo.es" required>
-		  	<label for="floatingInput" focus>Correo electrónico</label>
+	<!-- Navegador Izquierda Informacion para Usuario -->
+		<div *ngIf="identidad" class="text-center mt-3">
+			<p>Estas identificado</p>
+			<router-outlet></router-outlet>
 		</div>
-		<div class="form-floating mb-3">
-			<input #passwordIde="ngModel" [(ngModel)]="usuarioModelo_identidicado.password" 		name="passwordIde" type="password" class="form-control" placeholder="Contraseña" required>
-		  	<label for="floatingPassword">Contraseña</label>
-		</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" id="cerrarModal" data-bs-dismiss="modal">Cerrar</button>
-        <input type="submit" class="btn btn-outline-primary rounded-pill fw-bolder font-monospace" name="" value="Enviar">
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
--->
-
-
-
-
-
-
-
-<!--------------------------------------------------------------- 
--	DIV TOP IDENTIFICACION - Si el usuario no esta registrado   -
----------------------------------------------------------------->
-
-<div *ngIf="!identidad" class="container p-2" id="divIdyReg">
-	<div class="row">
-		<div class="col-1" id="a"></div>
-<!-- Seccion Identifícate -->
-		<div class="col-4" id="b">
+	<!-- Navegador Izquierda IDENTIFICACION ADMINISTRADOR -->
+		<div *ngIf="!identidad">
 			<div class="m-3 text-center">
-				<button type="button" class="btn btn-outline-success fw-bolder" data-bs-toggle="collapse" href="#formularioIdentificateEscondido">Identifícate</button>		
+				<button type="button" class="btn btn-outline-success fw-bolder" data-bs-toggle="collapse" href="#formularioIdentificateEscondido">Administración</button>		
 			</div>
 			<div *ngIf="identificateErrorMessage" class="alert alert-danger text-center" role="alert">
-  				{{identificateErrorMessage}}
+				{{identificateErrorMessage}}
 			</div>
-			<form #identificateForm="ngForm" (ngSubmit)="onSubmit()"	id="formularioIdentificateEscondido" class="collapse">
+			<form #identificateForm="ngForm" (ngSubmit)="onSubmit()"	id="formularioIdentificateEscondido" class="collapse p-2">
 				<div class="form-floating mb-3 bg-light" >
 				 	<input #emailIde="ngModel" [(ngModel)]="usuarioModelo_identidicado.email"	name="emailIde" type="email" class="form-control" placeholder="nombre@ejemplo.es" required>
 				  	<label for="floatingInput">Correo electrónico</label>
@@ -91,49 +74,32 @@ Ventana Modal
 				</div>
 			</form>
 		</div>
-		<div class="col-1" id="c"></div>
-<!-- Seccion Registrate -->		
-		<div class="col-5" id="d">
-			<div class="m-3 text-center">
-				<button type="button" class="btn btn-outline-secondary fw-bolder" data-bs-toggle="collapse" href="#formularioRegistrateEscondido">Regístrate</button>	
-			</div>
-			<div *ngIf="!passwordReg.valid && passwordReg.touched && registrateAlertaMessage" class="alert alert-warning text-center" role="alert">
-  				{{registrateAlertaMessage}}
-			</div>						
-			<form #registrateForm="ngForm" (ngSubmit)="onSubmitRegistrate()" id="formularioRegistrateEscondido" class="collapse">
-
-				<div class="form-floating mb-3 bg-light">
-				 	<input #nombre="ngModel" [(ngModel)]="usuarioModelo_registrado.nombre" 		name="nombreReg" type="text" class="form-control" placeholder="Nombre" required>
-				  	<label for="floatingInput">Nombre</label>
-				</div>
-				<div class="form-floating mb-3">
-					<input #apellidos="ngModel" [(ngModel)]="usuarioModelo_registrado.apellidos" 	name="apellidosReg" type="text" class="form-control" placeholder="Apellidos" required>
-				  	<label for="floatingPassword">Apellidos</label>
-				</div>
-				<div class="form-floating mb-3">
-					<input #emailReg="ngModel" [(ngModel)]="usuarioModelo_registrado.email"		name="emailReg" type="email" class="form-control" placeholder="nombre@ejemplo.es" required>
-				  	<label for="floatingPassword">Correo electrónico</label>
-				</div>
-				<div class="form-floating mb-2">
-					<input #passwordReg="ngModel" [(ngModel)]="usuarioModelo_registrado.password" 	name="passwordReg"	type="password" class="form-control" placeholder="Contraseña" required>
-				  	<label for="floatingPassword">Contraseña</label>
-				</div>
-				<!--	Imagen
-				<div class="mb-3 text-center">
-					<label for="floatingPassword" class="mb-2 fs-5">Imagen de Usuario</label>
-					<input #imagen="ngModel" [(ngModel)]="usuarioModelo_registrado.imagen" 		name="imagenReg" class="form-control" type="file" id="formFile">
-				</div> 
-				-->
-				<div class="form-floating mb-3 text-center">
-					<input type="submit" class="btn btn-outline-primary rounded-pill mt-4 fw-bolder font-monospace" name="" value="Registrarse">
-				</div>
-
-			</form>
-		</div>
-		<div class="col-1" id="e"></div>
+	</div> <!-- DIV NAVEGADOR IZQUIERDA -->
+	<div class="col-10" id="divCentral">
+	</div>
+	<div class="container text-white fw-bolder" id="footer">
+	    <p class="position-absolute top-50 start-50 translate-middle">
+			Copyright © 2021 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Un sitio web de Àlvar A.C &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="" id="social-fb" viewBox="0 0 16 16">
+			  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+			</svg>
+			<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="ms-3 me-3" id="social-email" viewBox="0 0 16 16">
+			  <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/>
+			  <path d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
+			</svg>
 
 
+		</p>
 
 
 	</div>
-</div>
+</div>	
+
+
+
+
+
+
+
+
+

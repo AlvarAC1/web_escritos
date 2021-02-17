@@ -11,7 +11,7 @@ import { UsuarioModelo } from './modelos/usuarioModelo';
 })
 
 export class AppComponent implements OnInit{
-  public title = 'Bienvenido a los Escritos de Manuel Argudo Alvarez';
+  public titulo = 'Escritos';
   public usuarioModelo_identidicado: UsuarioModelo;
   public usuarioModelo_registrado: UsuarioModelo;
   public identidad;
